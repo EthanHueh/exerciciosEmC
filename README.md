@@ -1,6 +1,8 @@
 # exerciciosEmC
 
-Autoria:    Fábio Casagrande
+Autoria:    
+            
+            Fábio Casagrande
 
             Nattan Silva de Souza
 
