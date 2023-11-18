@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+#include <malloc.h>
 
 int mediaFatec();
 
@@ -42,13 +43,14 @@ int Sub_Menu_Matrizes();
     int multiplicaMatrizes();
     
 int Sub_Menu_FuncoesRecursivas();
-	//fatorialComRecursiva
-	//fibonacciComRecursiva
-
+    int fatorialComRecursiva(int);
+    int fibonacciComRecursiva(int, int, int);
+    
 //Extras
 int Acha_maior_e_menor_com_ponteiros();
 int padraoASCII();
 int testeBibliotecaString();
+int alocacaoDinamica();
 
 int main()
 {
@@ -82,7 +84,8 @@ int main()
     printf("EXTRAS:\n");
     printf("101 - Acha_maior_e_menor_com_ponteiros\n");
     printf("102 - Padrao ASCII\n");
-    printf("103 - Teste com a biblioteca de STRINGS\n\n");
+    printf("103 - Teste com a biblioteca de STRINGS\n");
+    printf("104 - Alocacao dinamica (malloc AAAAAAAA)\n\n");
     
     printf("900 - Sair\n\n");
     
@@ -115,6 +118,7 @@ int main()
         case 10: fatorial_com_for(); break;
         case 11: fibonacci_com_for(); break;
         case 12: PA_com_for(); break;
+        
         case 13: Sub_Menu_Vetores(); break;
         case 14: Sub_Menu_Strings(); break;
         case 15: Sub_Menu_Matrizes(); break;
@@ -123,6 +127,7 @@ int main()
         case 101: Acha_maior_e_menor_com_ponteiros(); break;
         case 102: padraoASCII(); break;
         case 103: testeBibliotecaString(); break;
+        case 104: alocacaoDinamica(); break;
 		        
         case 900:   printf("saiu :)");
                     continua = 0;
@@ -243,11 +248,11 @@ int Sub_Menu_Strings()
             
             case 's': 	printf("saiu :)");
 						continua = 0;
-						break;
+			break;
 			
             case 'S': 	printf("saiu :)");
 						continua = 0;
-						break;
+			break;
         }
         
         printf("\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n\n");
@@ -294,9 +299,9 @@ int Sub_Menu_Matrizes()
             case 2: subtraiMatrizes(); break;
             case 3: multiplicaMatrizes(); break;
             
-            case 4: printf("saiu :)");
+            case 4:	printf("saiu :)");
 					continua = 0;
-					break;
+			break;
         }
         
         printf("\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n\n");
@@ -333,37 +338,40 @@ int Sub_Menu_FuncoesRecursivas()
         system("\npause");
         system("cls");
         
+        //declarando as variaveis aqui porque é ILEGAL declarar dentro do case
+        int numero = 0;                
+        int quantidadeTermos = 0;
+        
         switch (opcao)
         {
             default: printf("Opcao Invalida"); break;
             
             case 1:
-            
-                //fatorialComRecursiva(numero);
-            
+            	printf("\n\nFATORIAL RECURSIVISTA");
+                
+                printf("\n\nQual seria o numero que vossa mercer desejaria, em toda a sua elegancia, conhecer seu fatorialamento?\n");
+                scanf("%i", &numero);
+                fflush(stdin);
+                
+                printf("\nResultado: ");
+                printf("%i", fatorialComRecursiva(numero));
             break;
             
-            
             case 2:
-                /*
-                int quantidadeTermos = 0;
-                
                 printf("\n\nFIBONACCI RECURSIVISTA");
                 
-                printf("\n\nQuantos termos voce quer?");
+                printf("\n\nQuantos termos voce quer? ");
                 scanf("%i", &quantidadeTermos);
                 fflush(stdin);
                 
-                */
-                
-                
-                //fibonacciComRecursiva(1, 0, quantidadeTermos);
+                printf("\nSequencia de Fibonnaci ate o %i termo:\n", quantidadeTermos);
+                fibonacciComRecursiva(1,0,quantidadeTermos);
             
             break;
  
-            case 3: printf("saiu :)");
+            case 3:	printf("saiu :)");
             		continua = 0;
-            		break;
+            break;
         }
         
         printf("\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n\n");
@@ -540,11 +548,45 @@ int testeBibliotecaString ()
     return 0;
 }
 
+int alocacaoDinamica () {
+    
+    //EXERCICIO
+    //Leia 10 valores e coloque no vetor, usando os tramites de alocacao dinamica de memoria (malloc)
+    
+    printf("PROGRAMA QUE LE 10 VALORES E ALOCA DINAMICAMENTE A MEMORIA\n\n");
+    
+    //Crio um vetor de 0 elementos (sla, testei e foi)
+    //Logo depois uso um ponteiro pra apontar pro endereco dele
+    int vetor[0];
+    int *ponteiro = vetor;
+    
+    //Uso o "malloc" pra alocar 10 espaços do tipo inteiro
+    ponteiro = (int*) malloc(10*sizeof(int));
+    
+    //A partir daqui, posso usar o vetor como se ele ja tivesse 10 espacos desde o comeco
+    printf("Insira 10 valores:\n");
+    for (int i = 0; i <= 9; i++){
+        scanf("%i", &vetor[i]);
+        fflush(stdin);
+    }
+    
+    printf("\nOs valores inseridos foram:\n");
+    for (int i = 0; i <= 9; i++){
+        printf("%i\n", vetor[i]);
+    }
+    
+    //Aqui eu libero a memoria, num preciso mais >:(
+    free(ponteiro);
+    
+    return 0;
+}
+}
 
 
 
 
-//Funcoes insanas
+
+//programas...
 
 int mediaFatec()
 {
@@ -1666,4 +1708,32 @@ int multiplicaMatrizes()
     }
     
     return 0;
+}
+
+//recursivas...
+int fatorialComRecursiva(int n)
+{
+    if (n == 1) {
+    	return 1;
+	}	
+   	else {
+   		return n * fatorialComRecursiva(n-1);
+   	}
+}
+
+int fibonacciComRecursiva(int termo1, int termo2, int qtdTermos)
+{
+	if (qtdTermos == 0) {
+		return 0;
+	}
+	
+	int proximoTermo = termo1 + termo2;
+	
+	printf(" %i ", proximoTermo);
+	
+	termo1 = termo2;
+	termo2 = proximoTermo;
+    
+    fibonacciComRecursiva(termo1, termo2, qtdTermos - 1);
+    
 }
