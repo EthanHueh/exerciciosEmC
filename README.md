@@ -1,10 +1,7 @@
-# exerciciosEmC
+## Exercícios usando a Linguagem C
+
+Esse projeto é o compilado dos exercícios de programação que fizemos na disciplina de Linguagem de Programação, 2º semestre de 2023.
 
 Autoria:    
-            
-            Fábio Casagrande
-
-            Nattan Silva de Souza
-
-Esse projeto foi todo o progresso da disciplina de Linguagem de Programação no meus tempos de faculdade, segundo semestre de 2023.
-Todo o código foi feito em C.
+- [Fábio Casagrande](https://github.com/fabin0casa)
+- [Nattan Silva de Souza](https://github.com/EthanHueh)
