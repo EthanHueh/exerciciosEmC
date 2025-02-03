@@ -2,5 +2,4 @@
 *.win
 *.exe
 *.layout
-*.dev
 settings.json
