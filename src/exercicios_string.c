@@ -1,4 +1,5 @@
-#include<stdio.h>
+#include "../include/exercicios_string.h"
+#include <stdio.h>
 
 int tamanhoString()
 {

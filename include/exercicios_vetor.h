@@ -1,4 +1,3 @@
-// submenu_vetores.h
 #ifndef EXERCICIOS_VETOR_H
 #define EXERCICIOS_VETOR_H
 

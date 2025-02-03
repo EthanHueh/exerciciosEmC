@@ -1,3 +1,4 @@
+#include "../include/exercicios_iniciais.h"
 #include <stdio.h>
 
 int mediaFatec()

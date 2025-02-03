@@ -1,3 +1,4 @@
+#include "../include/exercicios_extras.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <malloc.h>

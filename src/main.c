@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "exercicios_iniciais.h"
-#include "exercicios_extras.h"
-#include "exercicios_vetor.h"
-#include "exercicios_string.h"
-#include "exercicios_recursiva.h"
-#include "exercicios_matriz.h"
+#include "../include/exercicios_iniciais.h"
+#include "../include/exercicios_extras.h"
+#include "../include/exercicios_vetor.h"
+#include "../include/exercicios_string.h"
+#include "../include/exercicios_recursiva.h"
+#include "../include/exercicios_matriz.h"
 
 int Sub_Menu_Vetores();
 int Sub_Menu_Strings();

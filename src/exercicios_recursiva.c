@@ -1,3 +1,4 @@
+#include "../include/exercicios_recursiva.h"
 #include <stdio.h>
 
 int fatorialComRecursiva(int n)
